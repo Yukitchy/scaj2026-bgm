@@ -1,0 +1,150 @@
+<!doctype html><html lang="ja"><head><meta name="robots" content="noindex"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>案E 没入</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Antique&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{font-size:calc(min(100vw,100vh*1.4375)/74);-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
+@media (orientation:portrait){html{font-size:calc(min(100vw,100vh*.72)/50)}}
+body{overflow:hidden;height:100vh;height:100dvh;user-select:none;-webkit-user-select:none;touch-action:manipulation}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-align:inherit}
+p{text-wrap:balance}
+img.noimg{display:none}
+[hidden]{display:none!important}
+[data-qr] svg{display:block;width:100%;height:100%}
+input[type=range]{-webkit-appearance:none;appearance:none;background:transparent;width:100%;height:2.6rem;cursor:pointer;--p:0%}
+input[type=range]::-webkit-slider-runnable-track{height:.45rem;border-radius:99px;background:linear-gradient(90deg,var(--sk,#111) var(--p),var(--st,rgba(0,0,0,.15)) var(--p))}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:1.7rem;height:1.7rem;border-radius:50%;background:var(--sk,#111);margin-top:-.62rem;border:.28rem solid var(--sb,#fff)}
+input[type=range]::-moz-range-track{height:.45rem;border-radius:99px;background:var(--st,rgba(0,0,0,.15))}
+input[type=range]::-moz-range-progress{height:.45rem;border-radius:99px;background:var(--sk,#111)}
+input[type=range]::-moz-range-thumb{width:1.1rem;height:1.1rem;border-radius:50%;background:var(--sk,#111);border:.28rem solid var(--sb,#fff)}
+.ico-play,.ico-pause{display:block;width:100%;height:100%}
+.ico-pause{display:none}.is-playing .ico-play{display:none}.is-playing .ico-pause{display:block}
+
+:root{--c1:#2a160d;--c2:#c8742b;--c3:#ff6a4d;--c4:#f7d9a8;--sk:#fff;--st:rgba(255,255,255,.28);--sb:#000}
+body{background:linear-gradient(160deg,var(--c1),var(--c2));color:#fff;font-family:"Zen Kaku Gothic New",sans-serif;position:relative}
+.bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:background-image .4s}
+.bg:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.72),rgba(0,0,0,.1) 62%),linear-gradient(transparent 45%,rgba(0,0,0,.82))}
+.hd{position:absolute;left:2.6rem;top:2.2rem;font-weight:700;letter-spacing:.18em;font-size:.95rem;text-shadow:0 1px 10px rgba(0,0,0,.5)}
+.big{position:absolute;left:2.6rem;bottom:20.5rem;max-width:62%}
+.big .tags{display:flex;gap:.6rem;margin-bottom:1.1rem}.big .tags span{font-weight:700;font-size:.95rem;letter-spacing:.12em;padding:.3rem .8rem;border:1.5px solid #fff}
+.big .tags span:first-child{background:#fff;color:#111}
+.big h1{font:400 5.6rem/1.1 "Zen Antique",serif;white-space:nowrap;text-shadow:0 .2rem 2rem rgba(0,0,0,.45)}
+.big p{font-size:1.5rem;line-height:1.7;font-weight:500;margin-top:.8rem;max-width:23em;text-shadow:0 1px 14px rgba(0,0,0,.6)}
+.pod{position:absolute;right:2.2rem;top:2rem;width:15.5rem;background:#fff;color:#111;border-radius:6px;padding:1rem;box-shadow:0 1rem 3rem rgba(0,0,0,.4)}
+.pod [data-qr]{width:100%;aspect-ratio:1}
+.pod .ph{display:flex;gap:.75rem;align-items:center;margin-bottom:.85rem}
+.pod .ph img{width:4.2rem;height:4.2rem;border-radius:4px;object-fit:cover;flex:none}
+.pod b{display:block;font:400 1.02rem/1.25 "Zen Antique",serif;white-space:nowrap;color:#b3261e}
+.pod .ph span{display:block;font-size:.8rem;font-weight:700;white-space:nowrap;margin-top:.2rem}
+.pod .sp{display:flex;align-items:center;justify-content:center;gap:.55rem;margin-top:.8rem}
+.pod .sp span{font:700 .62rem "Zen Kaku Gothic New";letter-spacing:.14em;color:#191414}
+.pod .sp img{height:1.65rem;width:auto}
+.big p{white-space:pre-line;word-break:keep-all}
+.pod{container-type:inline-size}
+@media (max-width:600px){.row{grid-auto-columns:6.4rem;overflow-x:auto;scrollbar-width:none}.pod{width:9.5rem;right:1rem;top:3rem}.big{left:1rem!important;right:1rem}}
+.pod .ph{gap:5cqi;margin-bottom:6cqi}
+.pod .ph img{width:27cqi;height:27cqi}
+.pod .ph>div{min-width:0}
+.pod b{font-size:7.4cqi !important}
+.pod .ph span{font-size:5.6cqi !important}
+.pod .sp{gap:3.5cqi;margin-top:5cqi}
+.pod .sp span{font-size:4.3cqi !important;white-space:nowrap}
+.pod .sp img{height:11cqi !important}
+
+.sheet{position:absolute;left:0;right:0;bottom:0;background:rgba(14,10,8,.9);padding:0 2.2rem 1.5rem}
+.pbar{display:grid;grid-template-columns:auto 1fr auto;gap:1.2rem;align-items:center;height:5.4rem}
+.pbtn{width:4.2rem;height:4.2rem;border-radius:50%;background:#fff;color:#111;padding:1.2rem;display:grid;place-items:center}
+.pbtn:active{transform:scale(.94)}
+.pbar .tm{font-weight:700;font-variant-numeric:tabular-nums;opacity:.8;font-size:.95rem;white-space:nowrap}
+.pbar .st{color:#ff9d8f;font-weight:700;font-size:.95rem;position:absolute;right:2.2rem;top:-2rem}
+.groups{display:block}
+.g h3{font:700 .9rem "Zen Kaku Gothic New";letter-spacing:.3em;margin-bottom:.6rem;color:var(--c4);display:flex;align-items:center;gap:.7rem}
+.g h3:after{content:"";flex:1;height:1px;background:rgba(255,255,255,.25)}
+.row{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:.7rem}
+.row button{position:relative;height:8.6rem;border-radius:6px;overflow:hidden;background:linear-gradient(160deg,var(--t1),var(--t2));padding:.8rem .9rem;display:flex;flex-direction:column;justify-content:flex-end;outline:0 solid #fff;outline-offset:2px;transition:outline-width .15s,transform .15s}
+.row button:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 25%,rgba(0,0,0,.8))}
+.row .th{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.row .n,.row .nm{position:relative;z-index:1}
+.row .n{font:900 1.25rem "Zen Kaku Gothic New";color:var(--c4)}
+.row .nm{font:400 1.1rem/1.25 "Zen Antique",serif;margin-top:.1rem;word-break:keep-all}
+.row .nm small{display:block;font-size:.78em;opacity:.85}
+.row button.on{outline-width:.3rem;transform:translateY(-.35rem)}
+.row button:active{transform:scale(.97)}
+@media (orientation:portrait){.big{bottom:30rem;max-width:90%}.big h1{font-size:3.4rem}.big p{font-size:1.2rem}.pod{width:12rem;padding:.8rem}.groups{grid-template-columns:1fr;gap:.6rem}.row button{height:5.6rem}.row .nm{font-size:.82rem}.g h3{margin-bottom:.3rem}}
+</style></head><body>
+<div class="bg" data-bg></div>
+<div class="hd">irregular coffee / SCAJ2026 Booth 152</div>
+<section class="big"><div class="tags"><span data-f="kana"></span><span data-f="jazz"></span></div><h1 data-fit data-f="name"></h1><p data-f="copy"></p></section>
+<aside class="pod"><div class="ph"><img src="img/podcast.jpg" alt=""><div><b>Podcast配信中！</b><span>イレギュラーコーヒー</span></div></div><div data-qr></div><div class="sp"><span>LISTEN ON</span><img src="img/spotify_logo.svg" alt="Spotify"></div></aside>
+<section class="sheet"><div class="pbar"><button class="pbtn" data-play aria-label="再生"><svg class="ico-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg><svg class="ico-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button><input type="range" min="0" max="1000" value="0" data-seek aria-label="再生位置"><div class="tm"><span data-f="cur">0:00</span> / <span data-f="dur">0:00</span></div><div class="st" data-status hidden></div></div>
+ <nav class="groups" aria-label="豆を選ぶ"><div class="g"><div class="row"><button data-pick="theme" aria-pressed="false" style="--t1:#2a160d;--t2:#c8742b"><img class="th" src="img/theme.jpg" alt="" onerror="this.remove()"><span class="n">♪</span><span class="nm">Irregular Coffee</span></button><button data-pick="01" aria-pressed="false" style="--t1:#6b4a1f;--t2:#e0a85a"><img class="th" src="img/01.jpg" alt="" onerror="this.remove()"><span class="n">01</span><span class="nm">ワルツの休息</span></button><button data-pick="02" aria-pressed="false" style="--t1:#1d1b1a;--t2:#8a4a1f"><img class="th" src="img/02.jpg" alt="" onerror="this.remove()"><span class="n">02</span><span class="nm">THE覚醒<small>-smokey-</small></span></button><button data-pick="03" aria-pressed="false" style="--t1:#2a0f1c;--t2:#8c2540"><img class="th" src="img/03.jpg" alt="" onerror="this.remove()"><span class="n">03</span><span class="nm">誠じつ</span></button><button data-pick="04" aria-pressed="false" style="--t1:#0f1a3a;--t2:#3b4f8f"><img class="th" src="img/04.jpg" alt="" onerror="this.remove()"><span class="n">04</span><span class="nm">宵月</span></button><button data-pick="05" aria-pressed="false" style="--t1:#14532d;--t2:#3aa05b"><img class="th" src="img/05.jpg" alt="" onerror="this.remove()"><span class="n">05</span><span class="nm">あっぱれ</span></button><button data-pick="06" aria-pressed="false" style="--t1:#5a1f2b;--t2:#c4505a"><img class="th" src="img/06.jpg" alt="" onerror="this.remove()"><span class="n">06</span><span class="nm">甘やかし</span></button></div></div></nav></section>
+<script>window.QR_N=33;window.QR_M="111111100011010001111011001111111100000100000011111000100101000001101110101101110011111101001011101101110101000101110010001101011101101110101010110100100110001011101100000101111111111100000101000001111111101010101010101010101111111000000001000001100001111000000000101111100111010111000010101111100100110011100001010110011101101101011001101101100110101100100010110101101011110101010000111001011110111011110011100000110011110011010101010001101011111011111010001011101000101000111001001100011101110000010011011001010011100111000100111010100011110001001010110111001001110011101010011111101001101101000111111001000101000000000110110101101011100010101111100000111100101010100001000010001010100011010110100010110001101111000011100101100101110011000110001010011000010100010000010010100010111111111100101101100010001101100010111110110000000001101110010111110100010111111111100011100110101011101010100100000101110011000000111100011101101110101001110100111110111111010101110101011111111011110110011011101110101011011001000110111100100100000100100001010010101100011100111111101000110011000011111100010";</script><script>(function(){
+var BEANS=[
+{id:'theme',no:'♪',label:'THEME',name:'Irregular Coffee',kana:'irregular coffee',copy:'あなたの日常に\nイレギュラーな一杯を。',tod:'いつでも',jazz:'ジャズヒップホップ',c:['#2a160d','#c8742b','#ff6a4d','#f7d9a8']},
+{id:'01',no:'01',label:'No.1',name:'ワルツの休息',kana:'浅煎り',copy:'ワルツを踊ったあとの、午後のひと休み。\nケーキやお菓子に寄り添う、ホッとする味。',tod:'午後',jazz:'ジャズワルツ',c:['#6b4a1f','#e0a85a','#f6c9a0','#fbeed2']},
+{id:'02',no:'02',label:'No.2',name:'THE覚醒 -smokey-',kana:'スモーキー',copy:'ほろ苦さとスモーキーな香りで、\n朝のぼんやりを一気に覚ます一杯。',tod:'朝',jazz:'スモーキー・ジャズ',c:['#1d1b1a','#8a4a1f','#e8742a','#d9cfc4']},
+{id:'03',no:'03',label:'No.3',name:'誠じつ',kana:'リキュールのような香り',copy:'リキュールのような甘い香りと、\nまっすぐ澄んだ後味。',tod:'朝',jazz:'ラウンジ',c:['#2a0f1c','#8c2540','#d49a5a','#f1d9c4']},
+{id:'04',no:'04',label:'No.4',name:'宵月',kana:'ひと癖ある余韻',copy:'日が沈むころ、少し不思議な余韻を\nゆっくり楽しむ一杯。',tod:'午後',jazz:'アンビエント',c:['#0f1a3a','#3b4f8f','#b9c4e8','#f2e6a8']},
+{id:'05',no:'05',label:'No.5',name:'あっぱれ',kana:'晴れやか',copy:'明るい酸味がぱっと広がる、\n晴れた日の始まりに似合う一杯。',tod:'朝',jazz:'ボサノバ',c:['#14532d','#3aa05b','#ffd23f','#e6f5ff']},
+{id:'06',no:'06',label:'No.6',name:'甘やかし',kana:'りんごのような甘さ',copy:'りんごのような甘さで、自分を甘やかす時間に。\nミルクを足してラテにしても。',tod:'午後',jazz:'ネオソウル',c:['#5a1f2b','#c4505a','#f0a58f','#fbe6d4']}
+];
+var $=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+var by={};BEANS.forEach(function(b){by[b.id]=b});
+var A=[new Audio(),new Audio()],cur=0,id=null,playing=false,fade=null;
+A.forEach(function(a){a.loop=true;a.preload='auto'});
+function fmt(t){if(!isFinite(t))return'0:00';t=Math.floor(t);return Math.floor(t/60)+':'+('0'+t%60).slice(-2)}
+function setText(k,v){$('[data-f="'+k+'"]').forEach(function(e){e.textContent=v})}
+function status(m){$('[data-status]').forEach(function(e){e.textContent=m;e.hidden=!m})}
+function ramp(a,to,ms,done){var from=a.volume,t0=performance.now();(function s(){var p=Math.min(1,(performance.now()-t0)/ms);a.volume=Math.max(0,Math.min(1,from+(to-from)*p));if(p<1)requestAnimationFrame(s);else done&&done()})()}
+function paint(b){
+ var r=document.documentElement;['1','2','3','4'].forEach(function(n,i){r.style.setProperty('--c'+n,b.c[i])});
+ document.body.setAttribute('data-cur',b.id);
+ ['no','label','name','kana','copy','tod','jazz'].forEach(function(k){setText(k,b[k])});
+ setText('count',b.id==='theme'?'THEME':'No.'+b.no);
+ $('[data-img]').forEach(function(i){i.classList.remove('noimg');i.src='img/'+b.id+'.jpg';i.alt=b.name+'のイメージ'});
+ $('[data-bg]').forEach(function(e){e.style.backgroundImage='url(img/'+b.id+'.jpg)'});
+ $('[data-pick]').forEach(function(e){var on=e.getAttribute('data-pick')===b.id;e.classList.toggle('on',on);e.setAttribute('aria-pressed',on)});
+ fit();document.title=b.name+' | irregular coffee SCAJ2026';
+ if('mediaSession' in navigator){try{navigator.mediaSession.metadata=new MediaMetadata({title:b.name,artist:'irregular coffee',album:'SCAJ2026',artwork:[{src:new URL('img/'+b.id+'.jpg',location.href).href,sizes:'1200x1200',type:'image/jpeg'}]})}catch(e){}}
+}
+function fit(){$('[data-fit]').forEach(function(e){e.style.fontSize='';var s=parseFloat(getComputedStyle(e).fontSize);var n=0;while(e.scrollWidth>e.clientWidth+1&&n++<40)e.style.fontSize=(s*=.95)+'px'})}
+if(document.fonts)document.fonts.ready.then(fit);
+function pstate(p){playing=p;document.body.classList.toggle('is-playing',p);$('[data-play]').forEach(function(e){e.setAttribute('aria-pressed',p);e.setAttribute('aria-label',p?'一時停止':'再生')});if('mediaSession' in navigator)navigator.mediaSession.playbackState=p?'playing':'paused'}
+function select(nid,auto){
+ if(!by[nid])return;var b=by[nid];
+ if(nid===id&&!auto){toggle();return}
+ var old=A[cur];cur=1-cur;var a=A[cur];id=nid;paint(b);status('');
+ a.onerror=function(){status('この曲は準備中です')};
+ a.onloadedmetadata=function(){setText('dur',fmt(a.duration))};
+ a.src='tracks/'+nid+'.mp3';a.currentTime=0;a.volume=0;
+ setText('cur','0:00');setText('dur','0:00');setSeek(0);
+ if(auto&&!window.__go){pstate(false);return}
+ window.__go=true;
+ var p=a.play();if(p&&p.then)p.then(function(){pstate(true);ramp(a,1,1400)}).catch(function(){pstate(false)});
+ if(!old.paused)ramp(old,0,1400,function(){old.pause()});
+ wake();
+}
+function toggle(){var a=A[cur];if(!a.src)return;
+ if(a.paused){a.volume=0;var p=a.play();if(p&&p.then)p.then(function(){pstate(true);ramp(a,1,500)}).catch(function(){});window.__go=true;wake()}
+ else{ramp(a,0,400,function(){a.pause();pstate(false)})}}
+function setSeek(v){$('[data-seek]').forEach(function(e){e.value=v;e.style.setProperty('--p',(v/10)+'%')});document.documentElement.style.setProperty('--prog',v/1000)}
+A.forEach(function(a,i){a.addEventListener('timeupdate',function(){if(i!==cur||!a.duration)return;setSeek(Math.round(a.currentTime/a.duration*1000));setText('cur',fmt(a.currentTime));setText('dur',fmt(a.duration))})});
+$('[data-seek]').forEach(function(e){e.addEventListener('input',function(){var a=A[cur];if(a.duration){a.currentTime=e.value/1000*a.duration}e.style.setProperty('--p',(e.value/10)+'%')})});
+$('[data-pick]').forEach(function(e){e.addEventListener('click',function(){select(e.getAttribute('data-pick'))})});
+$('[data-play]').forEach(function(e){e.addEventListener('click',toggle)});
+function step(d){var i=BEANS.findIndex(function(b){return b.id===id});select(BEANS[(i+d+BEANS.length)%BEANS.length].id)}
+$('[data-next]').forEach(function(e){e.addEventListener('click',function(){step(1)})});
+$('[data-prev]').forEach(function(e){e.addEventListener('click',function(){step(-1)})});
+if('mediaSession' in navigator){try{navigator.mediaSession.setActionHandler('play',toggle);navigator.mediaSession.setActionHandler('pause',toggle);navigator.mediaSession.setActionHandler('nexttrack',function(){step(1)});navigator.mediaSession.setActionHandler('previoustrack',function(){step(-1)})}catch(e){}}
+var wl=null;function wake(){try{if('wakeLock' in navigator&&!wl){navigator.wakeLock.request('screen').then(function(l){wl=l;l.addEventListener('release',function(){wl=null})}).catch(function(){})}}catch(e){}}
+document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')wake()});
+document.addEventListener('pointerdown',wake,{once:true});wake();
+$('img[data-img]').forEach(function(i){i.addEventListener('error',function(){i.classList.add('noimg')})});
+// QR (matrix pre-generated, https://open.spotify.com/show/64em2Li4rP3SAfH9rgRswd)
+$('[data-qr]').forEach(function(box){var n=window.QR_N,m=window.QR_M,q=3,s=n+q*2,p='';
+ for(var y=0;y<n;y++)for(var x=0;x<n;x++)if(m[y*n+x]==='1')p+='M'+(x+q)+' '+(y+q)+'h1v1h-1z';
+ box.innerHTML='<svg viewBox="0 0 '+s+' '+s+'" shape-rendering="crispEdges" role="img" aria-label="Spotifyのポッドキャストへ"><rect width="'+s+'" height="'+s+'" fill="#fff"/><path d="'+p+'" fill="#111"/></svg>'});
+var hash=location.hash.slice(1);select(by[hash]?hash:'theme',true);
+})();
+</script></body></html>
