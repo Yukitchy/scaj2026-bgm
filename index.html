@@ -135,6 +135,20 @@ html{font-size:16px!important}
 .fshint.on{display:block}
 :fullscreen .fs,:-webkit-full-screen .fs{display:none}
 @media (display-mode:fullscreen),(display-mode:standalone){.fs{display:none}}
+
+/* ボタン比較用 ?btn=2..5（右寄せ案は全てPodcast枠と同幅・同右端） */
+.take{white-space:nowrap;font-size:.98rem!important}
+body:not(.b4) .take{position:fixed;bottom:auto;top:calc(2rem + var(--podh,22.6rem) + .7rem)}
+body.b2 .take{top:calc(2rem + var(--podh,22.6rem))!important}
+body.b2 .take{position:fixed;bottom:auto;top:calc(2rem + var(--podh,22.6rem));border:0;border-radius:0 0 6px 6px;animation:none;box-shadow:0 1rem 3rem rgba(0,0,0,.4)}
+body.b2 .pod{border-radius:6px 6px 0 0}
+body.b3 .take{background:#fff;color:#b3261e;border:0;animation:none}
+body.b3 .take:before{background:#b3261e;color:#fff}
+body.b4 .take{position:fixed;right:auto;left:2.6rem;bottom:auto;top:calc(100% - 20.5rem + 1.4rem);width:auto;background:transparent;border:2px solid #fff;color:#fff;animation:none;box-shadow:none;padding:.7rem 1.3rem}
+body.b4 .take:before{background:#fff;color:#111}
+body.b5 .take{background:#f2c94c;color:#111;border:0;animation:takePulseY 2.4s ease-in-out infinite}
+body.b5 .take:before{background:#111;color:#f2c94c}
+@keyframes takePulseY{0%,100%{box-shadow:0 .8rem 2.4rem rgba(0,0,0,.5),0 0 0 0 rgba(242,201,76,.7)}50%{box-shadow:0 .8rem 2.4rem rgba(0,0,0,.5),0 0 0 .9rem rgba(242,201,76,0)}}
 </style></head><body>
 <div class="bg" data-bg></div>
 <div class="hd">irregular coffee / SCAJ2026 Booth 152</div>
@@ -218,4 +232,5 @@ document.addEventListener('click',function(e){if(!e.target.closest('.fs'))return
 var f=d.requestFullscreen||d.webkitRequestFullscreen;
 if(f){try{var p=f.call(d);if(p&&p.catch)p.catch(function(){h.classList.add('on');setTimeout(function(){h.classList.remove('on')},6000)});}catch(_){h.classList.add('on')}}
 else{h.classList.add('on');setTimeout(function(){h.classList.remove('on')},6000)}});})();</script>
+<script>(function(){var m=location.search.match(/btn=(\d)/);if(m)document.body.classList.add("b"+m[1]);var p=document.querySelector(".pod");function u(){if(p)document.documentElement.style.setProperty("--podh",p.getBoundingClientRect().height+"px")}u();if(window.ResizeObserver&&p)new ResizeObserver(u).observe(p);window.addEventListener("load",u);})();</script>
 </body></html>
